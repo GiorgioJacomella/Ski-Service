@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using skiService.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SkiService_Backend.Models;
+
 
 [Route("api/[controller]")]
 [ApiController]
@@ -18,16 +18,16 @@ public class RegistrationController : ControllerBase
 
     // GET: api/Registration
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<registrations>>> GetRegistrations()
+    public async Task<ActionResult<IEnumerable<Registration>>> GetRegistrations()
     {
-        return await _context.registrations.ToListAsync();
+        return await _context.Registrations.ToListAsync();
     }
 
     // GET: api/Registration/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<registrations>> GetRegistration(int id)
+    public async Task<ActionResult<Registration>> GetRegistration(int id)
     {
-        var registration = await _context.registrations.FindAsync(id);
+        var registration = await _context.Registrations.FindAsync(id);
 
         if (registration == null)
         {
@@ -39,9 +39,9 @@ public class RegistrationController : ControllerBase
 
     // POST: api/Registration
     [HttpPost]
-    public async Task<ActionResult<registrations>> PostRegistration(registrations registration)
+    public async Task<ActionResult<Registration>> PostRegistration(Registration registration)
     {
-        _context.registrations.Add(registration);
+        _context.Registrations.Add(registration);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetRegistration), new { id = registration.Id }, registration);
@@ -49,7 +49,7 @@ public class RegistrationController : ControllerBase
 
     // PUT: api/Registration/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutRegistration(int id, registrations registration)
+    public async Task<IActionResult> PutRegistration(int id, Registration registration)
     {
         if (id != registration.Id)
         {
@@ -81,13 +81,13 @@ public class RegistrationController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteRegistration(int id)
     {
-        var registration = await _context.registrations.FindAsync(id);
+        var registration = await _context.Registrations.FindAsync(id);
         if (registration == null)
         {
             return NotFound();
         }
 
-        _context.registrations.Remove(registration);
+        _context.Registrations.Remove(registration);
         await _context.SaveChangesAsync();
 
         return NoContent();
@@ -95,7 +95,7 @@ public class RegistrationController : ControllerBase
 
     private bool RegistrationExists(int id)
     {
-        return _context.registrations.Any(e => e.Id == id);
+        return _context.Registrations.Any(e => e.Id == id);
     }
 
 }

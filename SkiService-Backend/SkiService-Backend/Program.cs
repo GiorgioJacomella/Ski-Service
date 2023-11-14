@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using SkiService_Backend.Models;
 
 namespace SkiService_Backend
 {

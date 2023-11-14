@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SkiService_Backend.Models;
 
-public partial class blogContext : DbContext
+public partial class registrationContext : DbContext
 {
-    public blogContext()
+    public registrationContext()
     {
     }
 
-    public blogContext(DbContextOptions<blogContext> options)
+    public registrationContext(DbContextOptions<registrationContext> options)
         : base(options)
     {
     }
