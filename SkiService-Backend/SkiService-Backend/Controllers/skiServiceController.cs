@@ -37,15 +37,28 @@ public class RegistrationController : ControllerBase
         return registration;
     }
 
-    // POST: api/Registration
     [HttpPost]
     public async Task<ActionResult<Registration>> PostRegistration(Registration registration)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        if (registration.Status != "Unfinished")
+        {
+            return BadRequest("Status must be 'Unfinished'");
+        }
+        if (registration.Note != "")
+        {
+            return BadRequest("Note must be an empty string");
+        }
+
         _context.Registrations.Add(registration);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetRegistration), new { id = registration.Id }, registration);
     }
+
 
     // PUT: api/Registration/5
     [HttpPut("{id}")]
