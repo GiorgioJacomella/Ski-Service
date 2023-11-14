@@ -1,5 +1,5 @@
 
-/// funktion um das datum zu berechnen
+/// calculate date
 function datumfunction(deliveryDate, currentDate, prioritätInput) {
   const priorität = parseInt(prioritätInput);
 
@@ -16,7 +16,7 @@ function datumfunction(deliveryDate, currentDate, prioritätInput) {
 }
 
 
-/// einzelne Radio input werte verwerten
+///Radio input value
 function getRadioValue(name) {
   var group = document.getElementsByName(name);
 
@@ -45,8 +45,8 @@ function hasObjects(array) {
   return false;
 }
 
-/// API aufruf
-function sendAPI(jsonData, event) {
+/// API Post Call
+function sendAPI(jsonData, event, price, newdeliveryDate) {
   event.preventDefault();
   const jsonDataString = JSON.stringify(jsonData);
 
@@ -58,13 +58,22 @@ function sendAPI(jsonData, event) {
     }
   };
 
-  fetch('http://127.0.0.1:5048/api/Registration', requestOptions)
+    fetch('http://localhost:5092/api/Registration', requestOptions)//correct this API URL
     .then((response) => response.json())
     .then((data) => {
-      console.log('Antwort vom Server:', data);
+        console.log('Antwort vom Server:', data);
+        preview.innerHTML = `<div class="alert alert-success" role="alert">
+        ${newdeliveryDate} <br>
+        Kosten: ${price} CHF
+        <br>
+        Bestellung wurde Abgegeben
+        </div>`;
     })
     .catch((error) => {
-      console.error('Fehler beim Senden der Anfrage:', error);
+        console.error('Fehler beim Senden der Anfrage:', error);
+
+        preview.innerHTML = `<div class="alert alert-danger" role="alert">ERROR OCCURED</div>`;
+
     });
 }
 
@@ -149,7 +158,7 @@ function checkInputs() {
 
   } 
 
-  /// fehlermeldungn anzeigen
+  /// show error
   else {
     preview.innerHTML = `<div class="alert alert-danger" role="alert">
     ${missingInputs}
@@ -157,7 +166,7 @@ function checkInputs() {
   }
 }
 
-/// gleiche funktion wie "check inputs" jedoch mit API call imbegriffen
+/// Check inputs and execute API Call
 function bestellungSenden(event) {
   const nameInput = document.getElementById('nameInput').value;
   const emailInput = document.getElementById('emailInput').value;
@@ -240,20 +249,15 @@ function bestellungSenden(event) {
       "service": serviceInput,
       "startDate": currentDate.toISOString(),
       "finishDate": newdeliveryDate.toISOString(),
-      "status": "", 
+      "status": "Unfinished", 
       "note": "",
     }
 
-    sendAPI(submitObject, event);
+    sendAPI(submitObject, event, price, newdeliveryDate);
 
     event.preventDefault;
 
-    preview.innerHTML = `<div class="alert alert-success" role="alert">
-    ${newdeliveryDate} <br>
-    Kosten: ${price} CHF
-    <br>
-    Bestellung wurde Abgegeben
-    </div>`;
+
   } 
   else {
     preview.innerHTML = `<div class="alert alert-danger" role="alert">
