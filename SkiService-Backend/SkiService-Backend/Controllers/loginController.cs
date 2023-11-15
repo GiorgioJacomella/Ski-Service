@@ -29,13 +29,22 @@ namespace SkiService_Backend.Controllers
 
             if (userInfo != null && userInfo.Password == loginModel.Password)
             {
-
                 var token = GenerateJwtToken(userInfo);
+                var userSession = new UserSession
+                {
+                    SessionKey = token,
+                    UserId = userInfo.Id,
+                };
+                _context.UserSessions.Add(userSession);
+    
+                _context.SaveChanges();
 
                 return Ok(token);
             }
-
-            return Unauthorized();
+            else
+            {
+                return Unauthorized("Invalid username or password.");
+            }
         }
 
         private string GenerateJwtToken(UserInfo userInfo)

@@ -94,12 +94,8 @@ public partial class registrationContext : DbContext
             entity.ToTable("userSessions");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.IpAddress)
-                .HasMaxLength(45)
-                .IsUnicode(false)
-                .HasColumnName("ip_address");
             entity.Property(e => e.SessionKey)
-                .HasMaxLength(255)
+                .HasMaxLength(65535)
                 .IsUnicode(false)
                 .HasColumnName("session_key");
             entity.Property(e => e.UserId).HasColumnName("userID");

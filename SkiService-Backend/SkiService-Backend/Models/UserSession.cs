@@ -9,8 +9,6 @@ public partial class UserSession
 
     public string? SessionKey { get; set; }
 
-    public string? IpAddress { get; set; }
-
     public int? UserId { get; set; }
 
     public virtual UserInfo? User { get; set; }

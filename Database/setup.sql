@@ -30,8 +30,7 @@ CREATE TABLE userInfo(
 
 CREATE TABLE userSessions (
     ID INT IDENTITY(1,1) PRIMARY KEY,
-	session_key VARCHAR(255),
-	ip_address VARCHAR(45),
+	session_key VARCHAR(MAX),
     userID INT,
     FOREIGN KEY (userID) REFERENCES userInfo(ID)
 );
@@ -40,3 +39,4 @@ INSERT INTO userInfo ([userName], [password])
 VALUES ('admin', 'admin');
 
 SELECT * FROM registrations;
+SELECT * FROM userSessions;
