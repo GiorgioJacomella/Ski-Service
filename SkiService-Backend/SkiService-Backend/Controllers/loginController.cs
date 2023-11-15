@@ -25,7 +25,7 @@ namespace SkiService_Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> PostLogin(LoginModel loginModel)
         {
-            var userInfo = await _context.UserInfos.FindAsync(loginModel.UserName);
+            var userInfo = await _context.UserInfos.FirstOrDefaultAsync(u => u.UserName == loginModel.UserName);
 
             if (userInfo != null && userInfo.Password == loginModel.Password)
             {

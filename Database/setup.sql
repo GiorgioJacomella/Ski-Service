@@ -36,5 +36,7 @@ CREATE TABLE userSessions (
     FOREIGN KEY (userID) REFERENCES userInfo(ID)
 );
 
+INSERT INTO userInfo ([userName], [password])
+VALUES ('admin', 'admin');
 
 SELECT * FROM registrations;
