@@ -17,6 +17,7 @@ public partial class registrationContext : DbContext
 
     public virtual DbSet<Registration> Registrations { get; set; }
 
+
     public virtual DbSet<UserInfo> UserInfos { get; set; }
 
     public virtual DbSet<UserSession> UserSessions { get; set; }
