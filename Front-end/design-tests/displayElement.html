@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List Element</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <br>
+    <div class="container-sm">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-10">
+                        <label>ID: ${element.ID}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <label id="labelFor${element.name}Input" for="${element.name}Input">Name: </label>
+                        <input id="${element.Email}Input" value="${element.Email}" type="text">
+                        <br>
+                        <label id="labelFor${element.Email}Input" for="${element.Email}Input">Email:</label>
+                        <input id="${element.Email}Input" value="${element.Email}" type="email">
+                        <br>
+                        <label id="labelFor${element.Tel}Input" for="${element.Tel}Input">Tel: </label>
+                        <input id="${element.Tel}Input" value="${element.Tel}" type="tel">
+                        <br>
+                        <label id="labelFor${element.Service}Input" for="${element.Service}Input">Service: </label>
+                        <input id="${element.Service}Input" value="${element.Service">
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <label id="labelFor${element.startDate}Input" for="${element.startDate}Input">Start Datum:
+                        </label>
+                        <input id="${element.startDate}Input" value="${element.startDate}" type="date">
+                        <br>
+                        <label id="labelFor${element.FinishDate}Input" for="${element.FinishDate}}Input">End
+                            datum:</label>
+                        <input id="${element.FinishDate}}Input" value="${element.FinishDate}}" type="date">
+                        <br>
+                        <label id="labelFor${element.Status}Input" for="${element.Status}Input">Status: </label>
+                        <input id="${element.Status}Input" value="${element.Status}">
+                        <br>
+                        <label id="labelFor${element.Note}Input" for="${element.Note}Input">Notitz: </label>
+                        <input id="${element.Note}Input" value="${element.Note" type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <br>
+                    <div class="col-6"></div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-primary">Update</button>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
