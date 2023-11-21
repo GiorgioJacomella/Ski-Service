@@ -15,13 +15,17 @@ namespace SkiService_Backend.Controllers
         private readonly registrationContext _context;
         private readonly IConfiguration _configuration;
 
-        // Inject the configuration into your controller
         public AuthenticationController(registrationContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Die informationen für das Loginmodel müssein eingegeben werden und werden überprüft, bei korrekter eingabe wird ein JWT zurückgegeben der zusätzlich in UserSessions gespeichert wird
+        /// </summary>
+        /// <param name="loginModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<string>> PostLogin(LoginModel loginModel)
         {
@@ -47,6 +51,11 @@ namespace SkiService_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Generierung des JWT
+        /// </summary>
+        /// <param name="userInfo">Nutzerinformationen aus der Datenbank</param>
+        /// <returns></returns>
         private string GenerateJwtToken(UserInfo userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

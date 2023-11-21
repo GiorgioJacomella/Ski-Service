@@ -16,14 +16,21 @@ public class RegistrationController : ControllerBase
         _context = context;
     }
 
-    // GET: api/Registration
+    /// <summary>
+    /// Basic Get API endpoint
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Registration>>> GetRegistrations()
     {
         return await _context.Registrations.ToListAsync();
     }
 
-    // GET: api/Registration/5
+    /// <summary>
+    /// Basic get by ID endpoint
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<Registration>> GetRegistration(int id)
     {
@@ -37,6 +44,11 @@ public class RegistrationController : ControllerBase
         return registration;
     }
 
+    /// <summary>
+    /// Basic Post Endpoint um neue Aufträge zu Regestrieren
+    /// </summary>
+    /// <param name="registration">Registration model Informationen</param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<ActionResult<Registration>> PostRegistration(Registration registration)
     {
@@ -60,7 +72,12 @@ public class RegistrationController : ControllerBase
     }
 
 
-    // PUT: api/Registration/5
+    /// <summary>
+    /// Put endpoint um daten zu bearbeiten, hier ohne JWT überprüfung
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <param name="registration">Registration model Informationen</param>
+    /// <returns></returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> PutRegistration(int id, Registration registration)
     {
@@ -90,7 +107,12 @@ public class RegistrationController : ControllerBase
         return NoContent();
     }
 
-    // DELETE: api/Registration/5
+
+    /// <summary>
+    /// Basic Delete endpoint, hier ohne JWT übrprüfung
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteRegistration(int id)
     {

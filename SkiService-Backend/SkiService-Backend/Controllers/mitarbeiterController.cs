@@ -4,24 +4,28 @@ using SkiService_Backend.Models;
 
 namespace SkiService_Backend.Controllers
 {
-    [Route("api/dashboard")]
+    [Route("api/mitarbeiter")]
     [ApiController]
-    public class DashboardController : ControllerBase
+    public class mitarbeiterController : ControllerBase
     {
         private readonly registrationContext _context;
         private readonly IConfiguration _configuration;
 
-        // Inject the configuration into your controller
-        public DashboardController(registrationContext context, IConfiguration configuration)
+
+        public mitarbeiterController(registrationContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Verweis auf mitarbeiterdmodel wobei ein JTW Mitgegeben werden soll
+        /// </summary>
+        /// <param name="mitarbeiterModel">JWToken</param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PostDashboard([FromBody] DashboardModel dashboardModel)
+        public async Task<IActionResult> PostDashboard([FromBody] mitarbeitermodel dashboardModel)
         {
-            // Check if the session key exists in the database
             var userSession =  await _context.UserSessions
                                             .FirstOrDefaultAsync(us => us.SessionKey == dashboardModel.Token);
 
@@ -36,6 +40,13 @@ namespace SkiService_Backend.Controllers
             }
         }
 
+        /// <summary>
+        /// Eine bestimmte ID einer registration wird abgesucht und verändert, zusätzlich muss ein Gültiger JWT Vorliegen
+        /// </summary>
+        /// <param name="id">Object ID</param>
+        /// <param name="registration">Registration</param>
+        /// <param name="token">JWToken</param>
+        /// <returns></returns>
         [HttpPut("registration/{id}")]
         public async Task<IActionResult> PutRegistration(int id, [FromBody] Registration registration, string token)
         {
@@ -73,7 +84,12 @@ namespace SkiService_Backend.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Eine bestimmte ID wird gelöscht, zusätzlich muss ein Gültiger JWT vorliegen
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <param name="token">JWToken</param>
+        /// <returns></returns>
         [HttpDelete("registration/{id}")]
         public async Task<IActionResult> DeleteRegistration(int id, string token)
         {

@@ -2,6 +2,10 @@
 
 namespace SkiService_Backend.Models
 {
+    /// <summary>
+    /// Model für Mitarbeiter Account login
+    /// Wurde mit dem Database first konzept generiert
+    /// </summary>
     public class LoginModel
     {
         [Required]

@@ -2,7 +2,10 @@
 
 namespace SkiService_Backend.Models
 {
-    public class DashboardModel
+    /// <summary>
+    /// Model für JWT prüfung
+    /// </summary>
+    public class mitarbeitermodel
     {
         [Required]
         public string Token { get; set; }

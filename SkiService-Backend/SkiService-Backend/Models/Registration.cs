@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SkiService_Backend.Models;
 
+/// <summary>
+/// Model für die Regestrierung neuer Aufträge
+/// Wurde mit dem Database first konzept generiert
+/// </summary>
 public partial class Registration
 {
     public int Id { get; set; }

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 
 namespace SkiService_Backend.Models;
-
+/// <summary>
+/// Model für die Mitarbeiter registration
+/// Wurde mit dem Database first konzept generiert
+/// </summary>
 public partial class UserInfo
 {
     public int Id { get; set; }

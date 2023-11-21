@@ -18,6 +18,8 @@ namespace SkiService_Backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+            //Cors einstellung um API verfügbarkeit auf unsere Website zu beschränken
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -29,7 +31,7 @@ namespace SkiService_Backend
                     });
             });
 
-            // Build configuration for the connection string
+            // Datenbank connectionstring konfiguration
             var configuration = builder.Configuration;
             _connectionString = configuration.GetConnectionString("Db1");
             builder.Services.AddDbContext<registrationContext>(options =>
@@ -56,6 +58,7 @@ namespace SkiService_Backend
 
             var app = builder.Build();
 
+            //swagger implementierung
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

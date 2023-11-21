@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 
 namespace SkiService_Backend.Models;
+/// <summary>
+/// Model für sessions der mitarbeiter
+/// Wurde mit dem Database first konzept generiert
+/// </summary>
 
 public partial class UserSession
 {

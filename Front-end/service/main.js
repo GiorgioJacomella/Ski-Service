@@ -2,7 +2,7 @@ function init() {
     let mainView = document.getElementById("mainView");
     let token = localStorage.getItem('jwtToken');
 
-    fetch('http://localhost:5092/api/dashboard', {
+    fetch('http://localhost:5092/api/mitarbeiter', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -113,7 +113,7 @@ function init() {
 }
 
 function updateRegistration(id, registration, token) {
-    fetch(`http://localhost:5092/api/dashboard/registration/${id}?token=${encodeURIComponent(token)}`, { 
+    fetch(`http://localhost:5092/api/mitarbeiter/registration/${id}?token=${encodeURIComponent(token)}`, { 
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -137,7 +137,7 @@ function updateRegistration(id, registration, token) {
 }
 
 function deleteRegistration(id, token) {
-    fetch(`http://localhost:5092/api/dashboard/registration/${id}?token=${encodeURIComponent(token)}`, { 
+    fetch(`http://localhost:5092/api/mitarbeiter/registration/${id}?token=${encodeURIComponent(token)}`, { 
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
