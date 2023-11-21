@@ -8,7 +8,7 @@ A Web-service with CRUD Operations to the backend, Login Window and SQL Database
 Json Web Token
 C#
 DOTNET
-ASP.Net$
+ASP.Net
 MS SQL
 HTML
 JavaScript
